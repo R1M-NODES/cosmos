@@ -39,8 +39,8 @@ defundd config chain-id $CHAIN_ID
 defundd init "$NODE_MONIKER" --chain-id $CHAIN_ID
 
 # Download genesis and addrbook
-curl -Ls https://snapshots-testnet.r1m-team.com/defund/genesis.json > $HOME/.defund/config/genesis.json
-curl -Ls https://snapshots-testnet.r1m-team.com/defund/addrbook.json > $HOME/.defund/config/addrbook.json
+curl -Ls https://snapshots-testnet.stake-town.com/defund/genesis.json > $HOME/.defund/config/genesis.json
+curl -Ls https://snapshots-testnet.stake-town.com/defund/addrbook.json > $HOME/.defund/config/addrbook.json
 
 CONFIG_TOML=$HOME/.defund/config/config.toml
 PEERS=""
@@ -84,7 +84,7 @@ EOF
 defundd tendermint unsafe-reset-all --home $HOME/.defund --keep-addr-book
 
 # Add snapshot here
-URL="https://snapshots-testnet.r1m-team.com/defund/orbit-alpha-1_latest.tar.lz4"
+URL="https://snapshots-testnet.stake-town.com/defund/orbit-alpha-1_latest.tar.lz4"
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.defund
 
 sudo systemctl daemon-reload
