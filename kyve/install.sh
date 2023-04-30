@@ -40,7 +40,7 @@ kyved config chain-id $CHAIN_ID
 kyved init "$NODE_MONIKER" --chain-id $CHAIN_ID
 
 curl https://raw.githubusercontent.com/KYVENetwork/networks/main/kaon-1/genesis.json > ~/.kyve/config/genesis.json
-wget -O $HOME/.kyve/config/addrbook.json https://testnet-files.itrocket.net/kyve/addrbook.json
+wget -O $HOME/.kyve/config/addrbook.json https://files.itrocket.net/testnet/kyve/addrbook.json
 
 CONFIG_TOML=$HOME/.kyve/config/config.toml
 PEERS="664e06d2d6110c5ba93f8ecfee66f150bad981bf@kyve-testnet-peer.itrocket.net:28656"
