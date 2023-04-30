@@ -38,8 +38,8 @@ babylond config keyring-backend test
 babylond config chain-id $CHAIN_ID
 babylond init "$NODE_MONIKER" --chain-id $CHAIN_ID
 
-curl -s https://snapshots-testnet.r1m-team.com/babylon/genesis.json > $HOME/.babylond/config/genesis.json
-curl -s https://snapshots-testnet.r1m-team.com/babylon/addrbook.json > $HOME/.babylond/config/addrbook.json
+curl -s https://snapshots-testnet.stake-town.com/babylon/genesis.json > $HOME/.babylond/config/genesis.json
+curl -s https://snapshots-testnet.stake-town.com/babylon/addrbook.json > $HOME/.babylond/config/addrbook.json
 
 CONFIG_TOML=$HOME/.babylond/config/config.toml
 PEERS=""
@@ -85,7 +85,7 @@ EOF
 babylond tendermint unsafe-reset-all --home $HOME/.babylond --keep-addr-book
 
 # Add snapshot here
-URL="https://snapshots-testnet.r1m-team.com/babylon/bbn-test1_latest.tar.lz4"
+URL="https://snapshots-testnet.stake-town.com/babylon/bbn-test1_latest.tar.lz4"
 curl $URL | lz4 -dc - | tar -xf - -C $HOME/.babylond
 
 sudo systemctl daemon-reload
