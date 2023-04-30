@@ -40,10 +40,10 @@ kyved config chain-id $CHAIN_ID
 kyved init "$NODE_MONIKER" --chain-id $CHAIN_ID
 
 curl https://raw.githubusercontent.com/KYVENetwork/networks/main/kaon-1/genesis.json > ~/.kyve/config/genesis.json
-wget -O $HOME/.kyve/config/addrbook.json https://ss-t.kyve.nodestake.top/addrbook.json
+wget -O $HOME/.kyve/config/addrbook.json https://testnet-files.itrocket.net/kyve/addrbook.json
 
 CONFIG_TOML=$HOME/.kyve/config/config.toml
-PEERS=""
+PEERS="664e06d2d6110c5ba93f8ecfee66f150bad981bf@kyve-testnet-peer.itrocket.net:28656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
 SEEDS="de7865a2a4936fd4bb00861ed887f219d8dd73d7@kyve-testnet-seed.itrocket.net:28656"
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
@@ -84,7 +84,7 @@ EOF
 kyved tendermint unsafe-reset-all --home $HOME/.kyve
 
 # Add snapshot here
-curl https://ss-t.kyve.nodestake.top/2023-04-29_.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.kyve
+curl https://testnet-files.itrocket.net/kyve/snap_kyve.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.kyve
 
 sudo systemctl daemon-reload
 sudo systemctl enable kyved
