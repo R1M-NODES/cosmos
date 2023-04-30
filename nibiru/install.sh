@@ -38,8 +38,8 @@ nibid config keyring-backend os
 nibid config chain-id $CHAIN_ID
 nibid init "$NODE_MONIKER" --chain-id $CHAIN_ID
 
-curl -s https://snapshots-testnet.r1m-team.com/nibiru/genesis.json > $HOME/.nibid/config/genesis.json
-curl -s https://snapshots-testnet.r1m-team.com/nibiru/addrbook.json > $HOME/.nibid/config/addrbook.json
+curl -s https://snapshots-testnet.stake-town.com/nibiru/genesis.json > $HOME/.nibid/config/genesis.json
+curl -s https://snapshots-testnet.stake-town.com/nibiru/addrbook.json > $HOME/.nibid/config/addrbook.json
 
 CONFIG_TOML=$HOME/.nibid/config/config.toml
 PEERS=""
@@ -83,7 +83,7 @@ EOF
 nibid tendermint unsafe-reset-all --home $HOME/.nibid --keep-addr-book
 
 # Add snapshot here
-URL="https://snapshots-testnet.r1m-team.com/nibiru/nibiru-itn-1_latest.tar.lz4"
+URL="https://snapshots-testnet.stake-town.com/nibiru/nibiru-itn-1_latest.tar.lz4"
 curl $URL | lz4 -dc - | tar -xf - -C $HOME/.nibid
 
 sudo systemctl daemon-reload
