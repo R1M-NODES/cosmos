@@ -38,8 +38,8 @@ lavad config keyring-backend os
 lavad config chain-id $CHAIN_ID
 lavad init "$NODE_MONIKER" --chain-id $CHAIN_ID
 
-curl -Ls https://snapshots-testnet.r1m-team.com/lava/genesis.json > $HOME/.lava/config/genesis.json
-curl -Ls https://snapshots-testnet.r1m-team.com/lava/addrbook.json > $HOME/.lava/config/addrbook.json
+curl -Ls https://snapshots-testnet.stake-town.com/lava/genesis.json > $HOME/.lava/config/genesis.json
+curl -Ls https://snapshots-testnet.stake-town.com/lava/addrbook.json > $HOME/.lava/config/addrbook.json
 
 CONFIG_TOML=$HOME/.lava/config/config.toml
 PEERS=""
@@ -84,7 +84,7 @@ EOF
 lavad tendermint unsafe-reset-all --home $HOME/.lava --keep-addr-book
 
 # Add snapshot here
-URL="https://snapshots-testnet.r1m-team.com/lava/lava-testnet-1_latest.tar.lz4"
+URL="https://snapshots-testnet.stake-town.com/lava/lava-testnet-1_latest.tar.lz4"
 curl -L $URL | tar -Ilz4 -xf - -C $HOME/.lava
 
 sudo systemctl daemon-reload
