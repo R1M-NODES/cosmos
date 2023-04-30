@@ -39,11 +39,11 @@ ojod config chain-id $CHAIN_ID
 ojod init "$NODE_MONIKER" --chain-id $CHAIN_ID
 
 # Download genesis and addrbook
-curl -Ls https://snapshots-testnet.r1m-team.com/ojo/genesis.json > $HOME/.ojo/config/genesis.json
-curl -Ls https://snapshots-testnet.r1m-team.com/ojo/addrbook.json > $HOME/.ojo/config/addrbook.json
+curl -Ls https://snapshots-testnet.stake-town.com/ojo/genesis.json > $HOME/.ojo/config/genesis.json
+curl -Ls https://snapshots-testnet.stake-town.com/ojo/addrbook.json > $HOME/.ojo/config/addrbook.json
 
 CONFIG_TOML=$HOME/.ojo/config/config.toml
-PEERS="18300f0a5973798c3900fe51ff255bb6bca982f9@ojo-testnet-rpc.r1m-team.com:36656"
+PEERS="18300f0a5973798c3900fe51ff255bb6bca982f9@ojo-testnet-rpc.stake-town.com:36656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
 SEEDS=""
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
@@ -84,7 +84,7 @@ EOF
 ojod tendermint unsafe-reset-all --home $HOME/.ojo --keep-addr-book
 
 # Add snapshot here
-URL="https://snapshots-testnet.r1m-team.com/ojo/ojo-devnet_latest.tar.lz4"
+URL="https://snapshots-testnet.stake-town.com/ojo/ojo-devnet_latest.tar.lz4"
 curl -L $URL | tar -Ilz4 -xf - -C $HOME/.ojo
 
 sudo systemctl daemon-reload
