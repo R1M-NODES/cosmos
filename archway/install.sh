@@ -85,7 +85,7 @@ EOF
 archwayd tendermint unsafe-reset-all --home $HOME/.archway --keep-addr-book
 
 # Add snapshot here
-URL="https://snapshots-testnet.stake-town.com/archway/constantine-3_latest.tar"
+URL="https://snapshots-testnet.stake-town.com/archway/constantine-3_latest.tar.lz4"
 curl -L $URL | lz4 -dc - | tar -xf - -C $HOME/.archway
 
 sudo systemctl daemon-reload
