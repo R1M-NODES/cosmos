@@ -4,7 +4,7 @@
 |------------|:-----:|
 | Kyve       |   1   |
 | Cascadia   |   2   |
-| Defund     |   3   |
+|            |   3   |
 | Ojo        |   4   |
 | Source     |   5   |
 | Dymension  |   6   |
