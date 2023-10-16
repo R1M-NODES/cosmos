@@ -9,10 +9,10 @@ export -f selectPortSet && selectPortSet
 
 read -r -p "Enter node moniker: " NODE_MONIKER
 
-CHAIN_ID="bbn-test1"
+CHAIN_ID="bbn-test-2"
 CHAIN_DENOM="ubbn"
 BINARY_NAME="babylond"
-BINARY_VERSION_TAG="v0.5.0"
+BINARY_VERSION_TAG="v0.7.2"
 CHEAT_SHEET="https://nodes.r1m-team.com/babylon"
 
 printDelimiter
@@ -30,9 +30,9 @@ cd || return
 rm -rf babylon
 git clone https://github.com/babylonchain/babylon
 cd babylon || return
-git checkout v0.5.0
+git checkout v0.7.2
 make install
-babylond version # v0.5.0
+babylond version # v0.7.2
 
 babylond config keyring-backend test
 babylond config chain-id $CHAIN_ID
@@ -85,7 +85,7 @@ EOF
 babylond tendermint unsafe-reset-all --home $HOME/.babylond --keep-addr-book
 
 # Add snapshot here
-URL="https://snapshots-testnet.stake-town.com/babylon/bbn-test1_latest.tar.lz4"
+URL="https://snapshots-testnet.stake-town.com/babylon/bbn-test-2_latest.tar.lz4"
 curl $URL | lz4 -dc - | tar -xf - -C $HOME/.babylond
 
 sudo systemctl daemon-reload
