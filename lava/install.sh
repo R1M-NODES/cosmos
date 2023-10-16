@@ -9,10 +9,10 @@ export -f selectPortSet && selectPortSet
 
 read -r -p "Enter node moniker: " NODE_MONIKER
 
-CHAIN_ID="lava-testnet-1"
+CHAIN_ID="lava-testnet-2"
 CHAIN_DENOM="ulava"
 BINARY_NAME="lavad"
-BINARY_VERSION_TAG="v0.9.8"
+BINARY_VERSION_TAG="v0.24.0"
 CHEAT_SHEET=""
 
 printDelimiter
@@ -32,7 +32,7 @@ git clone https://github.com/lavanet/lava
 cd $HOME/lava || return
 git checkout $BINARY_VERSION_TAG
 make install
-lavad version # v0.9.8
+lavad version # v0.24.0
 
 lavad config keyring-backend os
 lavad config chain-id $CHAIN_ID
