@@ -12,7 +12,7 @@ read -r -p "Enter node moniker: " NODE_MONIKER
 CHAIN_ID="lava-testnet-2"
 CHAIN_DENOM="ulava"
 BINARY_NAME="lavad"
-BINARY_VERSION_TAG="v0.24.0"
+BINARY_VERSION_TAG="v0.25.2"
 CHEAT_SHEET=""
 
 printDelimiter
@@ -32,7 +32,7 @@ git clone https://github.com/lavanet/lava
 cd $HOME/lava || return
 git checkout $BINARY_VERSION_TAG
 make install
-lavad version # v0.24.0
+lavad version # v0.25.2
 
 lavad config keyring-backend os
 lavad config chain-id $CHAIN_ID
