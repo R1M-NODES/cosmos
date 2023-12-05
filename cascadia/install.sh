@@ -84,8 +84,7 @@ EOF
 cascadiad tendermint unsafe-reset-all --home $HOME/.cascadiad --keep-addr-book
 
 # Add snapshot here
-URL="https://snapshots-testnet.stake-town.com/cascadia//cascadia_6102-1_latest.tar.lz4"
-curl $URL | lz4 -dc - | tar -xf - -C $HOME/.cascadiad
+
 
 sudo systemctl daemon-reload
 sudo systemctl enable cascadiad
