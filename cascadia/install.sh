@@ -39,7 +39,7 @@ cascadiad config keyring-backend os
 cascadiad config chain-id $CHAIN_ID
 cascadiad init "$NODE_MONIKER" --chain-id $CHAIN_ID
 
-curl -s https://snapshots-testnet.stake-town.com/cascadia/genesis.json > $HOME/.cascadiad/config/genesis.json
+curl -s https://github.com/CascadiaFoundation/chain-configuration/raw/master/testnet/genesis.json.gz > $HOME/.cascadiad/config/genesis.json
 curl -s https://snapshots-testnet.stake-town.com/cascadia//addrbook.json > $HOME/.cascadiad/config/addrbook.json
 
 CONFIG_TOML=$HOME/.cascadiad/config/config.toml
@@ -84,7 +84,7 @@ EOF
 cascadiad tendermint unsafe-reset-all --home $HOME/.cascadiad --keep-addr-book
 
 # Add snapshot here
-
+curl -o - -L https://snapshot.cascadia.foundation/$(curl -s https://snapshot.cascadia.foundation/info.txt | jq -r .filename) | lz4 -c -d - | tar -x -C $HOME/.cascadiad data
 
 sudo systemctl daemon-reload
 sudo systemctl enable cascadiad
