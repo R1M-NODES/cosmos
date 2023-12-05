@@ -39,8 +39,8 @@ cascadiad config keyring-backend os
 cascadiad config chain-id $CHAIN_ID
 cascadiad init "$NODE_MONIKER" --chain-id $CHAIN_ID
 
-curl -s https://github.com/CascadiaFoundation/chain-configuration/raw/master/testnet/genesis.json > $HOME/.cascadiad/config/genesis.json
-curl -s https://snapshots-testnet.stake-town.com/cascadia//addrbook.json > $HOME/.cascadiad/config/addrbook.json
+curl -s https://snapshots-testnet.stake-town.com/cascadia/genesis.json > $HOME/.cascadiad/config/genesis.json
+curl -s https://snapshots-testnet.stake-town.com/cascadia/addrbook.json > $HOME/.cascadiad/config/addrbook.json
 
 CONFIG_TOML=$HOME/.cascadiad/config/config.toml
 PEERS="d1ed80e232fc2f3742637daacab454e345bbe475@54.204.246.120:26656,0c96a6c328eb58d1467afff4130ab446c294108c@34.239.67.55:26656"
