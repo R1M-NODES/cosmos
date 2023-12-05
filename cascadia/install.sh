@@ -9,10 +9,10 @@ export -f selectPortSet && selectPortSet
 
 read -r -p "Enter node moniker: " NODE_MONIKER
 
-CHAIN_ID="cascadia_6102-1"
+CHAIN_ID="cascadia_11029-1"
 CHAIN_DENOM="aCC"
 BINARY_NAME="cascadiad"
-BINARY_VERSION_TAG="v0.1.8"
+BINARY_VERSION_TAG="v0.1.9"
 CHEAT_SHEET="https://r1m.team/cascadia/"
 
 printDelimiter
@@ -31,9 +31,9 @@ cd $HOME || return
 rm -rf cascadia
 git clone https://github.com/cascadiafoundation/cascadia
 cd $HOME/cascadia || return
-git checkout v0.1.8
+git checkout v0.1.9
 make install
-cascadiad version # v0.1.8
+cascadiad version # v0.1.9
 
 cascadiad config keyring-backend os
 cascadiad config chain-id $CHAIN_ID
@@ -43,7 +43,7 @@ curl -s https://snapshots-testnet.stake-town.com/cascadia/genesis.json > $HOME/.
 curl -s https://snapshots-testnet.stake-town.com/cascadia//addrbook.json > $HOME/.cascadiad/config/addrbook.json
 
 CONFIG_TOML=$HOME/.cascadiad/config/config.toml
-PEERS="b651ea2a0517e82c1a476e25966ab3de3159afe8@34.229.22.39:26656,3b389873f999763d3f937f63f765f0948411e296@44.192.85.92:26656"
+PEERS="d1ed80e232fc2f3742637daacab454e345bbe475@54.204.246.120:26656,0c96a6c328eb58d1467afff4130ab446c294108c@34.239.67.55:26656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
 SEEDS=""
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
