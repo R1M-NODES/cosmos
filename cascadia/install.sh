@@ -12,7 +12,7 @@ read -r -p "Enter node moniker: " NODE_MONIKER
 CHAIN_ID="cascadia_11029-1"
 CHAIN_DENOM="aCC"
 BINARY_NAME="cascadiad"
-BINARY_VERSION_TAG="v0.1.9"
+BINARY_VERSION_TAG="v0.2.0"
 CHEAT_SHEET="https://r1m.team/cascadia/"
 
 printDelimiter
