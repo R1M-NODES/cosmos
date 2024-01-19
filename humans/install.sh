@@ -49,14 +49,25 @@ SEEDS="400f3d9e30b69e78a7fb891f60d76fa3c73f0ecc@humans.rpc.kjnodes.com:12259"
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
 
 APP_TOML=$HOME/.humansd/config/app.toml
-sed -i 's|^pruning *=.*|pruning = "custom"|g' $APP_TOML
-sed -i 's|^pruning-keep-recent  *=.*|pruning-keep-recent = "100"|g' $APP_TOML
-sed -i 's|^pruning-keep-every *=.*|pruning-keep-every = "0"|g' $APP_TOML
-sed -i 's|^pruning-interval *=.*|pruning-interval = "19"|g' $APP_TOML
-sed -i -e "s/^filter_peers *=.*/filter_peers = \"true\"/" $CONFIG_TOML
-indexer="null"
-sed -i -e "s/^indexer *=.*/indexer = \"$indexer\"/" $CONFIG_TOML
-sed -i 's|^minimum-gas-prices *=.*|minimum-gas-prices = "0.0025aHEART"|g' $APP_TOML
+sed -i 's|^create_empty_blocks *=.*|create_empty_blocks = false|' $APP_TOML
+sed -i 's|^prometheus-retention-time *=.*|prometheus-retention-time = 1000000000000|' $APP_TOML
+sed -i 's|^enabled *=.*|enabled = true|' $APP_TOML
+sed -i '/^\[api\]$/,/^\[/ s/enable = false/enable = true/' $APP_TOML
+sed -i 's|^swagger *=.*|swagger = true|' $APP_TOML
+sed -i 's|^max-open-connections *=.*|max-open-connections = 100|' $APP_TOML
+sed -i 's|^rpc-read-timeout *=.*|rpc-read-timeout = 5|' $APP_TOML
+sed -i 's|^rpc-write-timeout *=.*|rpc-write-timeout = 3|' $APP_TOML
+sed -i 's|^rpc-max-body-bytes *=.*|rpc-max-body-bytes = 1000000|' $APP_TOML
+sed -i 's|^enabled-unsafe-cors *=.*|enabled-unsafe-cors = false|' $APP_TOML
+sed -i 's|^create_empty_blocks *=.*|create_empty_blocks = false|' $CONFIG_TOML
+sed -i 's|^prometheus *=.*|prometheus = true|' $CONFIG_TOML
+sed -i 's|^create_empty_blocks_interval *=.*|create_empty_blocks_interval = "30s"|' $CONFIG_TOML
+sed -i 's|^timeout_propose *=.*|timeout_propose = "30s"|' $CONFIG_TOML
+sed -i 's|^timeout_propose_delta *=.*|timeout_propose_delta = "5s"|' $CONFIG_TOML
+sed -i 's|^timeout_prevote *=.*|timeout_prevote = "10s"|' $CONFIG_TOML
+sed -i 's|^timeout_prevote_delta *=.*|timeout_prevote_delta = "5s"|' $CONFIG_TOML
+sed -i 's|^cors_allowed_origins *=.*|cors_allowed_origins = ["*.humans.ai","*.humans.zone"]|' $CONFIG_TOML
+sed -i 's|^timeout_prevote_delta *=.*|timeout_prevote_delta = "5s"|' $CONFIG_TOML
 
 # Customize ports
 CLIENT_TOML=$HOME/.humansd/config/client.toml
