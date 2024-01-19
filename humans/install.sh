@@ -78,7 +78,7 @@ sed -i.bak -e "s%^node = \"tcp://localhost:26657\"%node = \"tcp://localhost:$POR
 
 printGreen "Install and configure cosmovisor..." && sleep 1
 
-go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.4.0
+go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.5.0
 mkdir -p ~/.humansd/cosmovisor/genesis/bin
 mkdir -p ~/.humansd/cosmovisor/upgrades
 cp ~/go/bin/humansd $HOME/.humansd/cosmovisor/genesis/bin
