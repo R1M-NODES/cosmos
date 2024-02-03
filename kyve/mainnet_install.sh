@@ -9,11 +9,11 @@ export -f selectPortSet && selectPortSet
 
 read -r -p "Enter node moniker: " NODE_MONIKER
 
-CHAIN_ID="kaon-1"
-CHAIN_DENOM="tkyve"
+CHAIN_ID="kyve-1"
+CHAIN_DENOM="t\ukyve"
 BINARY_NAME="kyved"
-BINARY_VERSION_TAG=v1.0.0-rc1
-CHEAT_SHEET=""
+BINARY_VERSION_TAG=v1.4.0
+CHEAT_SHEET="https://r1m.team/kyve/"
 
 printDelimiter
 echo -e "Node moniker:       $NODE_MONIKER"
@@ -29,11 +29,11 @@ echo "" && printGreen "Building binaries..." && sleep 1
 cd $HOME || return
 rm -rf kyve
 
-wget https://github.com/KYVENetwork/chain/releases/download/v1.0.0-rc1/kyved_linux_amd64.tar.gz
-tar -xvzf kyved_linux_amd64.tar.gz
-chmod +x ./kyved
-mv kyved $HOME/go/bin/
-rm kyved_linux_amd64.tar.gz
+wget https://github.com/KYVENetwork/chain/releases/download/v1.4.0/kyved_mainnet_linux_amd64.tar.gz
+tar -xvzf kyved_mainnet_linux_amd64.tar.gz
+chmod +x kyved
+rm kyved_mainnet_linux_amd64.tar.gz
+sudo mv kyved $HOME/go/bin/kyved
 sudo mkdir -p $HOME/go/bin/
 sudo mv kyved $HOME/go/bin/
 
@@ -41,13 +41,13 @@ sudo mv kyved $HOME/go/bin/
 kyved config chain-id $CHAIN_ID
 kyved init "$NODE_MONIKER" --chain-id $CHAIN_ID
 
-curl https://raw.githubusercontent.com/KYVENetwork/networks/main/kaon-1/genesis.json > ~/.kyve/config/genesis.json
-wget -O $HOME/.kyve/config/addrbook.json https://files.itrocket.net/testnet/kyve/addrbook.json
+curl https://files.kyve.network/mainnet/genesis.json > ~/.kyve/config/genesis.json
+wget -O $HOME/.kyve/config/addrbook.json "https://raw.githubusercontent.com/obajay/nodes-Guides/main/Projects/Kyve/addrbook.json"
 
 CONFIG_TOML=$HOME/.kyve/config/config.toml
-PEERS="664e06d2d6110c5ba93f8ecfee66f150bad981bf@kyve-testnet-peer.itrocket.net:28656"
+PEERS="b950b6b08f7a6d5c3e068fcd263802b336ffe047@18.198.182.214:26656,25da6253fc8740893277630461eb34c2e4daf545@3.76.244.30:26656"
 sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $CONFIG_TOML
-SEEDS="de7865a2a4936fd4bb00861ed887f219d8dd73d7@kyve-testnet-seed.itrocket.net:28656"
+SEEDS=""
 sed -i.bak -e "s/^seeds =.*/seeds = \"$SEEDS\"/" $CONFIG_TOML
 
 APP_TOML=$HOME/.kyve/config/app.toml
@@ -86,7 +86,7 @@ EOF
 kyved tendermint unsafe-reset-all --home $HOME/.kyve
 
 # Add snapshot here
-curl https://testnet-files.itrocket.net/kyve/snap_kyve.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.kyve
+curl http://kyve.snapshot.stavr.tech:1007/kyve/kyve-snap.tar.lz4 | lz4 -dc - | tar -xf - -C $HOME/.kyve
 
 sudo systemctl daemon-reload
 sudo systemctl enable kyved
