@@ -10,7 +10,7 @@ export -f selectPortSet && selectPortSet
 read -r -p "Enter node moniker: " NODE_MONIKER
 
 CHAIN_ID="kyve-1"
-CHAIN_DENOM="t\ukyve"
+CHAIN_DENOM="ukyve"
 BINARY_NAME="kyved"
 BINARY_VERSION_TAG=v1.4.0
 CHEAT_SHEET="https://r1m.team/kyve/"
