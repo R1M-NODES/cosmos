@@ -12,7 +12,7 @@ read -r -p "Enter node moniker: " NODE_MONIKER
 CHAIN_ID="kyve-1"
 CHAIN_DENOM="ukyve"
 BINARY_NAME="kyved"
-BINARY_VERSION_TAG="v2.0.0"
+BINARY_VERSION_TAG="v2.1.0"
 CHEAT_SHEET="https://r1m.team/kyve-mainnet-services/"
 
 printDelimiter
