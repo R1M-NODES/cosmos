@@ -12,7 +12,7 @@ read -r -p "Enter node moniker: " NODE_MONIKER
 CHAIN_ID="mocha-4"
 CHAIN_DENOM="utia"
 BINARY_NAME="celestia-appd"
-BINARY_VERSION_TAG="v3.8.1-mocha"
+BINARY_VERSION_TAG="v4.0.2-mocha"
 CHEAT_SHEET="https://r1m.team/celestia-testnet-services/"
 
 printDelimiter
